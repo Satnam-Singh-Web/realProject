@@ -1,0 +1,88 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model StockStimulationWebApp.Models.Login
+
+@{
+    Layout = "_Layout";
+}
+<script>
+    var Browser;
+    var browser = {
+        chrome: false,
+        mozilla: false,
+        opera: false,
+        msie: false,
+        safari: false
+    };
+    var sUsrAg = navigator.userAgent;
+    if (sUsrAg.indexOf("Chrome") > -1) {
+         Browser= "Chrome";
+    } else if (sUsrAg.indexOf("Safari") > -1) {
+        Browser= "Safari";
+    } else if (sUsrAg.indexOf("Opera") > -1) {
+        Browser = true;
+    } else if (sUsrAg.indexOf("Firefox") > -1) {
+        Browser = "Firefox";
+    } else if (sUsrAg.indexOf("MSIE") > -1) {
+        Browser = "MSIE";
+    }
+    var facts=[] ;
+    $.getJSON('//ipapi.co/json/', function (data) {
+         var jsondata = JSON.stringify(data, null, 2);
+        var jsondat= JSON.parse(jsondata);
+        console.log(jsondat.ip);
+        facts[0] = jsondat.ip;
+        facts[1] = jsondat.city;
+        facts[2] = jsondat.region;
+        facts[3] = jsondat.country_name;
+        facts[4] = Browser;
+        document.getElementById("hidden").value = facts[0]+"," + facts[1]+","+facts[2]+","+facts[3]+"," +facts[4];
+
+    });
+</script>
+<div class="container">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Sorts+Mill+Goudy" rel="stylesheet">
+
+    <div class=".change">
+        <div class="col-lg-6 " style="padding-top: 40px">
+            <span style="font-family: 'Dancing Script', cursive;font-size: 430%;">Built for Stock Investors.</span><br>
+            <span style="font-size: 150%;font-family: 'Sorts Mill Goudy', serif;"> Stock stimulation is a platform which allow the user to invest in their own way.Second to second stimulation of stocks will be available.</span>
+
+        </div>
+        <div class="col-lg-6" style="padding-top: 40px">
+
+            <div class="well bs-component   ">
+                <form class="form-horizontal" asp-controller="User" asp-action="Index" method="post" style="font-size: 21px">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="userName" class="form-control" id="inputEmail" style="font-size: 21px" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+                            <div class="col-lg-8">
+                                <input type="password" class="form-control" asp-for="password" id="inputPassword" style="font-size: 21px" placeholder="Password">
+                                <div class="checkbox">
+                                    <label>
+
+                                        <input type="checkbox" id="show" style="font-size: 120%"> Show Password
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-4 col-lg-offset-2">
+                                <button class="btn btn-success btn-lg" style="font-size: 21px">LogIn</button>
+                            </div>
+                        </div>
+                        <input asp-for="info" type="hidden" name="info" Value="" id="hidden">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

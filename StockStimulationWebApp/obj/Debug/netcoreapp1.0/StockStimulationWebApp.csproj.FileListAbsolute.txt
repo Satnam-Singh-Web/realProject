@@ -1,0 +1,20 @@
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.deps.json
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.runtimeconfig.json
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.runtimeconfig.dev.json
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.dll
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.csprojResolveAssemblyReference.cache
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.AssemblyInfo.cs
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.pdb
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.dll
+C:\Users\Satnam Singh\Desktop\Project\StockStimulationWebApp\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.pdb
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.deps.json
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.runtimeconfig.json
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.runtimeconfig.dev.json
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.dll
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\bin\Debug\netcoreapp1.0\StockStimulationWebApp.pdb
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.csprojResolveAssemblyReference.cache
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.AssemblyInfo.cs
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.dll
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.pdb
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Satnam Singh\Videos\Mirror Videos\realtime-stocks-master\StockStimulationWebApp\obj\Debug\netcoreapp1.0\StockStimulationWebApp.AssemblyInfoInputs.cache

@@ -1,0 +1,269 @@
+﻿@using StockStimulationWebApp.Models
+
+@*<a class="linkDetails" href="">
+        @*<a class="linkDetails" href="@Url.Action("Details","Default")">*
+        <div class="item  col-xs-4 col-lg-4 " style="margin: 0%;">
+            <div class="thumbnail ">
+                <img class="group list-group-image text-center  col-sm-4 col-md-4 col-xs-4 image" src="" style="padding-top: 5px; font-family: 'ABeeZee', sans-serif; " />
+                <div class="caption">
+
+                    <p id="symbol" class="group inner symbol list-group-item-heading text-center col-md-3 col-sm-2  col-xs-2 h4" style="padding-top: 10px; font-family: 'ABeeZee', sans-serif; padding-right: 40px" title="Symbol">
+
+                    </p>
+
+                    <p class="group inner last list-group-item-heading text-right col-md-3  col-sm-pull-1 col-sm-3 col-xs-2 h4" style="padding-top: 10px; font-family: 'ABeeZee', sans-serif;" title="Last change">
+                        125463.32
+                    </p>
+
+
+                    <p class="group change inner list-group-item-heading text-center col-md-3 col-sm-3 col-xs-4 h4" style="padding-top: 5px; font-family: 'ABeeZee', sans-serif; font-size: 200%; padding-right: 30px" title="Change">
+                        12.11
+                    </p>
+                    <p class="group inner chngperct list-group-item-heading text-left col-md-1 col-sm-1 col-xs-1 h4" style="padding-top: 5px; font-family: 'ABeeZee', sans-serif; font-size: 200%;" title="% Change">
+                        12.11
+                    </p>
+
+                    <div class="row"> </div>
+
+                </div>
+            </div>
+
+        </div>
+    </a>*@
+
+@* @Html.ActionLink("LinkSymbol","Details","Default",new{ Symbol="rbc",id=1});*@
+<a class="linkDetails" href="@Url.Action("Details","Default",new { id = @ViewBag.Symbol })">
+    @*<a class="linkDetails" href="">*@
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="@ViewBag.Symbol" class=" text-center col-md-2 col-sm-2  col-xs-2 h3" style="padding-top: 10px; font-family: 'ABeeZee', sans-serif; padding-right: 0px" title="Symbol">
+            </span>  <span id="name" class=" text-center col-md-6 col-sm-6  col-xs-6 h4" style="padding-top: 25px; font-family: 'ABeeZee', sans-serif; padding-right: 0px">
+            </span>
+            <script>
+                $('#name').attr('id', "name" + '@ViewBag.Symbol');
+                $("#name" + '@ViewBag.Symbol').text(jsonStockSymbol["@ViewBag.Symbol"].Name);
+                $(document).ready(function() {
+
+                    $("#" + '@ViewBag.Symbol').text('@ViewBag.Symbol');
+                });
+            </script>
+            @*<img class="group list-group-image text-center  col-sm-4 col-md-4 col-xs-4 image" src="@Model.companyImage" style="padding-top: 5px; font-family: 'ABeeZee', sans-serif; " />*@
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="open"></td>
+                                <td class="text-center" id="high"></td>
+                                <td class="text-center" id="low"></td>
+                                <td class="text-center" id="close"></td>
+                                <script>
+                                    $('#open').attr('id', "open" + '@ViewBag.Symbol');
+                                    $('#close').attr('id', "close" + '@ViewBag.Symbol');
+                                    $('#high').attr('id', "high" + '@ViewBag.Symbol');
+                                    $('#low').attr('id', "low" + '@ViewBag.Symbol');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+@*@{
+    var jsondata = (info)ViewData["data"];
+    @Html.Value(@jsondata.shareInfo);
+}
+<input id="data1" type="hidden" value="@jsondata.shareInfo" hidden="hidden">*@
+
+
+
+<script>
+    $(document).ready(function ()
+    {
+        var Symbol = '@ViewBag.Symbol';
+        //var shareSymbol = Symbol;
+        //console.log(Symbol);
+        // var loadData = $.load("Default/loadData/" + shareSymbol);
+        var loadData = $.post("Default/loadData/" + '@ViewBag.Symbol',
+            function (data, textStatus) {
+                var jsonStockInfo;
+                jsonStockInfo = JSON.parse(data);
+                // var metaData = jsonStockInfo["Meta Data"];
+                //  var symbol = metaData["2. Symbol"];
+
+
+                var extract1 = jsonStockInfo["Time Series (1min)"];
+                var date = Object.keys(extract1)[0];
+                var value = extract1[date];
+                $("#open" + '@ViewBag.Symbol').text(value["1. open"]);
+                $("#close" + '@ViewBag.Symbol').text(value["4. close"]);
+                $("#high" + '@ViewBag.Symbol').text(value["2. high"]);
+                $("#low" + '@ViewBag.Symbol').text(value["3. low"]);
+
+                console.log('@ViewBag.Symbol');
+                console.log(jsonStockInfo);
+            });
+    });
+    var i = 0;
+    var stampString = new Date();
+    var m = moment.utc(stampString, "HH:mm");
+    var startTimer = null;
+    function start() {
+        startTimer = setInterval(function () {
+            var loadData = $.post("Default/loadData/" + '@ViewBag.Symbol',
+                function (data, textStatus) {
+                    var jsonStockInfo;
+                    jsonStockInfo = JSON.parse(data);
+                    // var metaData = jsonStockInfo["Meta Data"];
+                    //  var symbol = metaData["2. Symbol"];
+                    console.log(jsonStockInfo);
+
+                    var extract1 = jsonStockInfo["Time Series (1min)"];
+                    var date = Object.keys(extract1)[0];
+                    var value = extract1[date];
+                    $("#open" + '@ViewBag.Symbol').text(value["1. open"]);
+                    $("#close" + '@ViewBag.Symbol').text(value["4. close"]);
+                    $("#high" + '@ViewBag.Symbol').text(value["2. high"]);
+                    $("#low" + '@ViewBag.Symbol').text(value["3. low"]);
+                    
+                });
+   
+        }, 60000);
+    }
+
+        
+    var hour = m.tz("America/Toronto").format('HH');
+    var convtHour = parseInt(hour);
+    var minutes = m.tz("America/Toronto").format('mm');
+    var convtMinutes = parseInt(minutes);
+
+    $(document).ready(function() {
+        if (convtHour === 09 && convtMinutes >= 30) {//09=23
+         console.log("first if");
+            start();
+        } else if (convtHour > 09 && convtHour <= 16) {
+            console.log("else if");
+            start();
+        } else {
+            var  condTimer = setInterval(function () {
+                
+                var stampString = new Date();
+                var m = moment.utc(stampString, "HH:mm");
+                var hour = m.tz("America/Toronto").format('HH');
+                var convtHour = parseInt(hour);
+                var minutes = m.tz("America/Toronto").format('mm');
+                var seconds = m.tz("America/Toronto").format('ss');
+                var convSecs = parseInt(seconds);
+                var convtMinutes = parseInt(minutes);
+                if (convtHour >= 09 && convtMinutes >= 30&&convSecs===00) {
+                    start();
+                    clearInterval(condTimer);
+                }
+            }, 100);
+        }
+    });
+    window.setInterval(function () {
+        
+        var stampString = new Date();
+        var m = moment.utc(stampString, "HH:mm");
+        var hour = m.tz("America/Toronto").format('HH');
+        if (hour === "16") {
+            clearInterval(startTimer);
+        }
+    }, 1000);
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>

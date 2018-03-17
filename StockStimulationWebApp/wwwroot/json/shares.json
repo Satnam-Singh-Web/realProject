@@ -1,0 +1,42 @@
+﻿{
+  "JOBS": {
+    "Name": "51job, Inc.",
+    "Sector": "Technology",
+    "Industry": "Diversified Commercial Services"
+  },
+  "CAFD": {
+    "Name": "8point3 Energy Partners LP",
+    "Sector": "Public Utilities",
+    "Industry": "Electric Utilities: Central"
+  },
+  "EGHT": {
+    "Name": "8x8 Inc",
+    "Sector": "Public Utilities",
+    "Industry": "Telecommunications Equipment"
+  },
+  "AVHI": {
+    "Name": "A V Homes, Inc.",
+    "Sector": "Capital Goods",
+    "Industry": "Homebuilding"
+  },
+  "SHLM": {
+    "Name": "A. Schulman, Inc.",
+    "Sector": "Basic Industries",
+    "Industry": "Major Chemicals"
+  },
+  "AAON": {
+    "Name": "AAON, Inc.",
+    "Sector": "Capital Goods",
+    "Industry": "Industrial Machinery/Components"
+  },
+  "ABAX": {
+    "Name": "ABAXIS, Inc.",
+    "Sector": "Capital Goods",
+    "Industry": "Industrial Machinery/Components"
+  },
+  "ABEO": {
+    "Name": "Abeona Therapeutics Inc.",
+    "Sector": "Health Care",
+    "Industry": "Major Pharmaceuticals"
+  }
+}

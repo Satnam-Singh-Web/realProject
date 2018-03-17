@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:5000/Default -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <!--<link href="css/font-awesome.min.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="./Stock Stimulation_files/jquery-ui.css">
+
+    <link href="./Stock Stimulation_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./Stock Stimulation_files/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+
+    <script src="./Stock Stimulation_files/jquery-3.2.0.js.download"></script>
+    <script src="./Stock Stimulation_files/jquery-ui.min.js.download"></script>
+
+    <link href="./Stock Stimulation_files/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        a.list:hover { color: black; }
+
+        .thumbnail:hover { background-color: lightgray; }
+
+        a.linkDetails { color: lightskyblue; }
+
+        a.grid:active { color: lightgray; }
+    </style>
+    <title>Stock Stimulation</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <a href="http://localhost:5000/" class="navbar-brand">
+                        <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav  formtext">
+
+                        <li>
+                            <a class="active " href="http://localhost:5000/Default">
+                                <h4>
+                                    <i class="fa fa-home"> Market</i>
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:5000/Default">
+                                <h4>
+                                    <i class="fa fa-list "> My Shares</i>
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:5000/Default" id="day">
+                                <h4>
+                                    <i class="fa fa-money" aria-hidden="true"> Direct Buy</i>
+                                </h4>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                    <ul class=" btn-toolbar navbar-right" style="padding-top: 1.2%">
+                        <a class="btn btn-default  control-label " href="http://localhost:5000/Default/Login"> Sign In </a>
+                        <a class="btn btn-success  control-label" href="http://localhost:5000/Default/SignUp">Sign Up</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br>
+<div class="container" style="padding-top: 4%">
+    
+<script src="./Stock Stimulation_files/moment.min.js.download"></script>
+<script src="./Stock Stimulation_files/moment-timezone-with-data.min.js.download"></script>
+    <link href="./Stock Stimulation_files/home.css" rel="stylesheet">
+    <style>
+        a.list:hover { color: black; }
+
+        .thumbnail:hover { background-color: lightgray; }
+
+        a.linkDetails { color: black; }
+
+        a.grid:active { color: lightgray; }
+    </style>
+    <title>Stock Stimulation</title>
+<h2 class="col-xs-12 page-header" style="font-family: &#39;ABeeZee&#39;, sans-serif;">
+        Stocks
+    </h2>
+
+
+<div class="container" id="stocks">
+        
+    <script type="text/javascript">
+        
+        var jsonStockSymbol;
+        var length;
+        $(document).ready(function () {
+            $.getJSON( "Default/load/shareslist", function( json ) {
+                jsonStockSymbol = JSON.parse(json);
+                 length = Object.keys(jsonStockSymbol).length;
+
+                // $("#products").load("/Default/loadData/" + jsonStockSymbol[1].Symbol);
+
+                // $("#products2").load("/Default/loadData/" + jsonStockSymbol[2].Symbol);    
+                for (var i = 0; i < length; i++) {
+                    $("<div/>").attr('id', 'stock' + i).appendTo('div#stocks');
+                    $("#stock" + i).load("Default/load/shareshtml/" + Object.keys(jsonStockSymbol)[i]);
+       
+                    // + jsonStockSymbol[i].Symbol
+                }
+            });
+        });
+       
+
+       
+
+        //window.setInterval(function () {
+        //    var date = new Date();
+        //    var time = date.getMinutes();
+        //    var sec = date.getSeconds();
+        //    if ((time >= 0 || time < 60) && sec === 0) {
+        //       ajax call to load all the data 
+        //    }
+        //}, 1000);
+
+    </script>
+    <div id="products" class="row  list-group ">
+    </div>
+
+
+<script src="./Stock Stimulation_files/home.js.download"></script>
+ <div id="stock0">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/JOBS">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="JOBS" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">JOBS</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'JOBS').text('JOBS');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openJOBS">57.6100</td>
+                                <td class="text-center" id="highJOBS">59.1300</td>
+                                <td class="text-center" id="lowJOBS">56.2200</td>
+                                <td class="text-center" id="closeJOBS">58.5700</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'JOBS');
+                                     $('#close').attr('id', "close" + 'JOBS');
+                                      $('#high').attr('id', "high" + 'JOBS');
+                                     $('#low').attr('id', "low" + 'JOBS');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'JOBS';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'JOBS',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'JOBS').text(value["1. open"]);
+            $("#close" + 'JOBS').text(value["4. close"]);
+            $("#high" + 'JOBS').text(value["2. high"]);
+            $("#low" + 'JOBS').text(value["3. low"]);
+
+            console.log('JOBS');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock1">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/CAFD">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="CAFD" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">CAFD</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'CAFD').text('CAFD');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openCAFD">15.0600</td>
+                                <td class="text-center" id="highCAFD">15.0600</td>
+                                <td class="text-center" id="lowCAFD">14.0100</td>
+                                <td class="text-center" id="closeCAFD">14.1900</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'CAFD');
+                                     $('#close').attr('id', "close" + 'CAFD');
+                                      $('#high').attr('id', "high" + 'CAFD');
+                                     $('#low').attr('id', "low" + 'CAFD');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'CAFD';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'CAFD',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'CAFD').text(value["1. open"]);
+            $("#close" + 'CAFD').text(value["4. close"]);
+            $("#high" + 'CAFD').text(value["2. high"]);
+            $("#low" + 'CAFD').text(value["3. low"]);
+
+            console.log('CAFD');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock2">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/EGHT">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="EGHT" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">EGHT</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'EGHT').text('EGHT');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openEGHT">14.0000</td>
+                                <td class="text-center" id="highEGHT">14.9000</td>
+                                <td class="text-center" id="lowEGHT">13.7500</td>
+                                <td class="text-center" id="closeEGHT">14.7000</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'EGHT');
+                                     $('#close').attr('id', "close" + 'EGHT');
+                                      $('#high').attr('id', "high" + 'EGHT');
+                                     $('#low').attr('id', "low" + 'EGHT');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'EGHT';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'EGHT',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'EGHT').text(value["1. open"]);
+            $("#close" + 'EGHT').text(value["4. close"]);
+            $("#high" + 'EGHT').text(value["2. high"]);
+            $("#low" + 'EGHT').text(value["3. low"]);
+
+            console.log('EGHT');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock3">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/AVHI">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="AVHI" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">AVHI</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'AVHI').text('AVHI');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openAVHI">18.4000</td>
+                                <td class="text-center" id="highAVHI">18.6000</td>
+                                <td class="text-center" id="lowAVHI">17.1000</td>
+                                <td class="text-center" id="closeAVHI">17.4000</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'AVHI');
+                                     $('#close').attr('id', "close" + 'AVHI');
+                                      $('#high').attr('id', "high" + 'AVHI');
+                                     $('#low').attr('id', "low" + 'AVHI');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'AVHI';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'AVHI',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'AVHI').text(value["1. open"]);
+            $("#close" + 'AVHI').text(value["4. close"]);
+            $("#high" + 'AVHI').text(value["2. high"]);
+            $("#low" + 'AVHI').text(value["3. low"]);
+
+            console.log('AVHI');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock4">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/SHLM">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="SHLM" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">SHLM</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'SHLM').text('SHLM');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openSHLM">38.0500</td>
+                                <td class="text-center" id="highSHLM">38.6000</td>
+                                <td class="text-center" id="lowSHLM">36.6500</td>
+                                <td class="text-center" id="closeSHLM">36.7500</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'SHLM');
+                                     $('#close').attr('id', "close" + 'SHLM');
+                                      $('#high').attr('id', "high" + 'SHLM');
+                                     $('#low').attr('id', "low" + 'SHLM');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'SHLM';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'SHLM',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'SHLM').text(value["1. open"]);
+            $("#close" + 'SHLM').text(value["4. close"]);
+            $("#high" + 'SHLM').text(value["2. high"]);
+            $("#low" + 'SHLM').text(value["3. low"]);
+
+            console.log('SHLM');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock5">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/AAON">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="AAON" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">AAON</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'AAON').text('AAON');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openAAON">36.4500</td>
+                                <td class="text-center" id="highAAON">38.1000</td>
+                                <td class="text-center" id="lowAAON">34.8000</td>
+                                <td class="text-center" id="closeAAON">36.2500</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'AAON');
+                                     $('#close').attr('id', "close" + 'AAON');
+                                      $('#high').attr('id', "high" + 'AAON');
+                                     $('#low').attr('id', "low" + 'AAON');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'AAON';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'AAON',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'AAON').text(value["1. open"]);
+            $("#close" + 'AAON').text(value["4. close"]);
+            $("#high" + 'AAON').text(value["2. high"]);
+            $("#low" + 'AAON').text(value["3. low"]);
+
+            console.log('AAON');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock6">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/ABAX">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="ABAX" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">ABAX</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'ABAX').text('ABAX');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openABAX">48.6900</td>
+                                <td class="text-center" id="highABAX">48.8900</td>
+                                <td class="text-center" id="lowABAX">45.1300</td>
+                                <td class="text-center" id="closeABAX">47.1000</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'ABAX');
+                                     $('#close').attr('id', "close" + 'ABAX');
+                                      $('#high').attr('id', "high" + 'ABAX');
+                                     $('#low').attr('id', "low" + 'ABAX');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'ABAX';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'ABAX',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'ABAX').text(value["1. open"]);
+            $("#close" + 'ABAX').text(value["4. close"]);
+            $("#high" + 'ABAX').text(value["2. high"]);
+            $("#low" + 'ABAX').text(value["3. low"]);
+
+            console.log('ABAX');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div><div id="stock7">
+
+<a class="linkDetails" href="http://localhost:5000/Default/Details/ABEO">
+    <div class=" col-xs-12 col-lg-6 " style="margin: 0%;">
+        <div class="thumbnail ">
+            <span id="ABEO" class=" text-center col-md-12 col-sm-12  col-xs-12 h3" style="padding-top: 10px; font-family: &#39;ABeeZee&#39;, sans-serif; padding-right: 40px" title="Symbol">ABEO</span>
+            <script>
+    $(document).ready(function() {
+        
+        $("#" + 'ABEO').text('ABEO');
+    });
+            </script>
+            <div class="caption ">
+                <div class="table-responsive col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Open</th>
+                                <th class="text-center">High</th>
+                                <th class="text-center">Low</th>
+                                <th class="text-center">Close</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" id="openABEO">17.4500</td>
+                                <td class="text-center" id="highABEO">17.5500</td>
+                                <td class="text-center" id="lowABEO">14.7000</td>
+                                <td class="text-center" id="closeABEO">15.8000</td>
+                                <script>
+                                       $('#open').attr('id', "open" + 'ABEO');
+                                     $('#close').attr('id', "close" + 'ABEO');
+                                      $('#high').attr('id', "high" + 'ABEO');
+                                     $('#low').attr('id', "low" + 'ABEO');
+                                </script>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row"></div>
+
+            </div>
+        </div>
+    </div>
+</a>
+
+
+
+
+
+
+<script>
+    var name = 'ABEO';
+    //var shareSymbol = name;
+    //console.log(name);
+    // var loadData = $.load("Default/loadData/" + shareSymbol);
+    var loadData = $.post("Default/loadData/" + 'ABEO',
+        function (data, textStatus) {
+            var jsonStockInfo;
+            jsonStockInfo = JSON.parse(data);
+             var metaData = jsonStockInfo["Meta Data"];
+               var symbol = metaData["2. Symbol"];
+
+
+            var extract1 = jsonStockInfo["Monthly Time Series"];
+            var date = Object.keys(extract1)[0];
+            var value = extract1[date];
+            $("#open" + 'ABEO').text(value["1. open"]);
+            $("#close" + 'ABEO').text(value["4. close"]);
+            $("#high" + 'ABEO').text(value["2. high"]);
+            $("#low" + 'ABEO').text(value["3. low"]);
+
+            console.log('ABEO');
+            console.log(jsonStockInfo);
+        });
+    ////var jsonStockInfo = JSON.parse(loadData);
+
+    ////console.log(name);
+    ////console.log(jsonStockInfo);
+    ////$("#" + jsonStockSymbol[1].Symbol).text(jsonStockSymbol[1].Symbol);
+    ////var ID = jsonStockSymbol[1].Symbol;
+    //$.ajax({
+    //    url: "Default/loadData/" + shareSymbol,
+    //    type: "POST",
+    //    dataType: "json",
+    //    success: function (resp) {
+    //        if (resp["json"] === "error") {
+    //            // error reaching server
+    //        } else {
+    //                          // console.log(resp); // successfully reached server
+    //        }
+    //        var jsonData = JSON && JSON.parse(resp) || $.parseJSON(resp);
+    //        var metaData = jsonData["Meta Data"];
+    //        var symbol = metaData["2. Symbol"];
+
+    //        $("span#symbol").attr('id', symbol);
+    //        $("#" + symbol).text(symbol);
+
+    //        var extract1 = jsonData["Monthly Time Series"];
+    //        var date = Object.keys(extract1)[0];
+    //        var value = extract1[date];
+    //        $('#open').attr('id', "open" + symbol);
+    //        $('#close').attr('id', "close" + symbol);
+    //        $('#high').attr('id', "high" + symbol);
+    //        $('#low').attr('id', "low" + symbol);
+    //        $("#open" + symbol).text(value["1. open"]);
+    //        $("#close" + symbol).text(value["4. close"]);
+    //        $("#high" + symbol).text(value["2. high"]);
+    //        $("#low" + symbol).text(value["3. low"]);
+
+
+    //    },
+    //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //        // error
+    //    }
+    //});
+
+
+
+
+
+    // $("input:last-of-type").load("/Default/loadData/"+symbol);
+
+
+
+    //var jsonArray = $("#data1").val();
+
+    //var jsonStockInfo = JSON.parse(jsonArray);
+
+
+    //var metaData = jsonStockInfo["Meta Data"];
+    //var symbol = metaData["2. Symbol"];
+    //$('#data1').attr('id', "data" + symbol);
+
+    ////var jsonArray2 = $("#data"+symbol).val();
+
+
+
+    ////var metaData2 = jsonArray2["Meta Data"];
+    ////var symbol = metaData2["2. Symbol"];
+    //$("span#symbol").attr('id', symbol);
+    //$("#" + symbol).text(symbol);
+
+    //var extract1 = jsonStockInfo["Monthly Time Series"];
+    //var date = Object.keys(extract1)[0];
+    //var value = extract1[date];
+    //$('#open').attr('id', "open" + symbol);
+    //$('#close').attr('id', "close" + symbol);
+    //$('#high').attr('id', "high" + symbol);
+    //$('#low').attr('id', "low" + symbol);
+    //$("#open" + symbol).text(value["1. open"]);
+    //$("#close" + symbol).text(value["4. close"]);
+    //$("#high" + symbol).text(value["2. high"]);
+    //$("#low" + symbol).text(value["3. low"]);
+</script>
+</div></div>       
+
+
+</div>
+<script src="./Stock Stimulation_files/bootstrap.min.js.download"></script>
+
+    <script src="./Stock Stimulation_files/jquery-3.2.0.js.download"></script>
+<script src="./Stock Stimulation_files/bootstrap.min.js(1).download" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</body></html>

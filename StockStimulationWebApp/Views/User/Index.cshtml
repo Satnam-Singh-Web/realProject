@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StockStimulationWebApp.Models.companyShares>
+
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/home.css" rel="stylesheet" />
+<style>
+    a.list:hover {
+        color: black;
+    }
+
+    .thumbnail:hover {
+        background-color: lightgray;
+    }
+
+    a.linkDetails {
+        color: lightskyblue;
+    }
+
+    a.grid:active {
+        color: lightgray;
+    }
+</style>
+<title>Stock Stimulation</title>
+<h2 class="col-xs-12 page-header" style="font-family: 'ABeeZee', sans-serif;">
+    Stocks
+    <span class=" btn-toolbar pull-right">
+        <a class="btn list" id="list" href="" onclick="">
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+        </a>
+        <a class="btn grid" id="grid" href="">
+            <i class="fa fa-th-large fa-2x" aria-hidden="true"></i>
+        </a>
+    </span>
+</h2>
+
+
+
+<div class="container">
+    <table id="table" class="table table-striped table-hover " style="display: none; margin: 0%">
+        <thead>
+            <tr>
+                <th class="text-left col-md-2 col-xs-2" style="font-size: 150%">Company</th>
+                <th class="text-left col-md-3 col-xs-3" style="font-size: 150%">Symbol</th>
+                <th class="text-left col-md-3 col-xs-3" style="font-size: 150%">Last</th>
+                <th class="text-left col-md-2 col-xs-2 chng" style="font-size: 150%; padding-left: inherit">Change</th>
+                <th class="text-left col-md-2 col-xs-2" style="font-size: 150%">%Change</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="products" class="row list-group ">
+        @*@foreach (var shares in Model)
+        {
+            @Html.Partial("_shares", shares);
+            ;
+        }*@
+    </div>
+</div>
+
+
+<script src="~/js/home.js"></script>
+
+

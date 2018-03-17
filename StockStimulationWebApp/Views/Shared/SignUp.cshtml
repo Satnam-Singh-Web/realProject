@@ -1,0 +1,161 @@
+﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model StockStimulationWebApp.Models.signUp
+
+@{
+    Layout = "_Layout";
+}
+
+<script src="//code.jboxcdn.com/0.4.8/jBox.min.js"></script>
+<link href="//code.jboxcdn.com/0.4.8/jBox.css" rel="stylesheet">
+<div class="container" style="padding-top: 4%">
+    
+    <style>
+        input[type=checkbox] {
+            transform: scale(1.42);
+            -ms-transform: scale(1.42);
+            -webkit-transform: scale(1.42);
+            padding: 10px;
+        }
+
+    </style>
+
+    <div class="well bs-component">
+        <form name="form" class="form-horizontal" method="post" asp-action="Login" asp-controller="Default">
+            <fieldset style="font-size: 160%">
+                <legend>Registeration Form</legend>
+                <div class="form-group">
+                    <label for="firstName" asp-for="firstname" class="col-lg-3 control-label">First Name</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" style="font-size: 100%" required id="firstName" asp-for="firstname" placeholder="First Name">
+                        <span class="text-danger " asp-validation-for="firstname"></span>
+                        <span asp-validation-for="firstname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-lg-3 control-label">Last Name</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" style="font-size: 100%" required id="lastName" asp-for="lastname" placeholder="Last Name">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNo" class="col-lg-3 control-label">Phone no.</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" asp-for="phoneno" id="phoneNo" name="phoneNo" placeholder="Phone" required style="font-size: 100%">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Addr" class="col-lg-3 control-label">Address</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" style="font-size: 100%" required id="Addr" asp-for="address" placeholder="Address">
+                        <span class="help-block">Write your full address including city, province and country</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputUser" class="col-lg-3 control-label">User Name</label>
+                    <div class="col-lg-9">
+                        <input type="text" style="font-size: 100%" required class="form-control" asp-for="username" id="inputUser" placeholder="UserName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" style="font-size: 100%" asp-for="email" required id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-3 control-label">Encrytion key</label>
+                    <div class="col-lg-9">
+                        <div class="input-group">
+                            <input type="password" class="form-control" style="font-size: 100%" asp-for="Encryptionkey" required id="encrypt" placeholder="encryption key">
+                            <span class="input-group-btn"><span id="Tooltip-1" class="target btn fa fa-question"></span></span>
+                        </div>
+                    </div>
+
+                </div> 
+
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+                    <div class="col-lg-9">
+                        <input type="password" class="form-control" style="font-size: 100%" required asp-for="password" id="inputPassword" placeholder="Password">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="conpass" class="col-lg-3 control-label">Confirm Password</label>
+                    <div class="col-lg-9">
+                        <input type="password" class="form-control" style="font-size: 100%" required id="conpass" placeholder="Confirm Password">
+                        <div class="checkbox" style="font-size: 100%">
+                            <label>
+                                <input type="checkbox" id="show" style="font-size: 100%; margin-top: 8px; margin-left: 0.5px"> <span style="margin-left: 19px">Show Password</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-3">
+                        <button type="reset" class="btn btn-lg btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    
+    @* onclick="javascript:getIt(this)" onFocus="if(this.value===this.defaultValue)this.value='';" *@
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+
+        /* Tooltip */
+
+        new jBox('Tooltip',
+        {
+            attach: '#Tooltip-1',
+            content: 'No need to rememberit. It is for make your accout secure.\n Can be any special characters or letters'
+        });
+    });
+</script>
+
+<span id="encrypttooltip" class=" tooltip" title="need not remember it. Can be any letter or special charecter">weoihoihoihoihoiho</span>
+
+    <script type="text/javascript">  
+    function show() {
+        var p = document.getElementById('inputPassword');
+        p.setAttribute('type', 'text');
+        var c = document.getElementById('conpass');
+        c.setAttribute('type', 'text');
+    }
+
+    function hide() {
+        var p = document.getElementById('inputPassword');
+        p.setAttribute('type', 'password');
+        var c = document.getElementById('conpass');
+        c.setAttribute('type', 'password');
+    }
+
+    var pwShown = 0;
+
+    document.getElementById("show").addEventListener("click", function() {
+        if (pwShown === 0) {
+            pwShown = 1;
+            show();
+        } else {
+            pwShown = 0;
+            hide();
+        }
+    }, false);
+    /**
+     * Created by Satnam Singh on 4/20/2017.
+     */</script>
+<script src="~/js/jquery-3.2.0.js"></script>
+
+
+

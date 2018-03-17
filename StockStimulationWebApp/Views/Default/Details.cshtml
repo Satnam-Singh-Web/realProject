@@ -1,0 +1,107 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<link href="~/css/loader.css" rel="stylesheet" />
+<br>
+<div class="container" style="">
+    <h2 class="col-xs-12 page-header" style="font-family: 'ABeeZee', sans-serif;">RBC stocks</h2>
+    <table cellspacing="0" class="table table-responsive" style="font-size: 175%">
+        <tbody>
+            <tr>
+                <td>
+                    <span>2,368.92</span>
+
+
+
+                    <span>USD</span>
+
+
+
+                    <div>
+
+
+
+                        <label>Last |</label>
+
+
+                        <label>11:12:42 AM</label>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <span>7.79 (+0.33%)</span>
+                    </div>
+
+
+                    <div>
+                        <label>Change</label>
+                    </div>
+                </td>
+
+                <td>
+                    <span>---</span>
+                    <div>
+                        <label>Volume</label>
+                    </div>
+                </td>
+
+
+
+            </tr>
+
+        </tbody>
+
+    </table>
+    <hr style="font-size: 100%">
+
+</div>
+
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<div class="container" id="graph"></div>
+<div class="main" id="wait">
+
+
+    <div class="s1">
+        <div class="s b sb1"></div>
+        <div class="s b sb2"></div>
+        <div class="s b sb3"></div>
+        <div class="s b sb4"></div>
+    </div>
+
+
+    <div class="s2">
+        <div class="s b sb5"></div>
+        <div class="s b sb6"></div>
+        <div class="s b sb7"></div>
+        <div class="s b sb8"></div>
+    </div>
+
+    <div class="bigcon">
+        <div class="big b"></div>
+    </div>
+
+
+</div>
+<script src="~/js/jquery-3.2.0.js"></script>
+
+<script>
+    $(document).ajaxStart(function () {
+        $("#wait").css("display", "block");
+    });
+    $(document).ajaxComplete(function () {
+        $("#wait").css("display", "none");
+    });
+
+    $('#graph').load('/Default/graph/MSFT/Montly');</script>
+
+
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
